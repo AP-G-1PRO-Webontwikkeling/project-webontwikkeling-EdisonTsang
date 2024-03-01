@@ -1,9 +1,9 @@
-export interface Developer {
+/*export interface Developer {
     id: string;
     name: string;
     isActive: boolean;
     gamesPublished: number;
-  }
+  }*/
   
   export interface Game {
     id: string;
@@ -15,6 +15,11 @@ export interface Developer {
     imageUrl: string;
     genre: string;
     platforms: string[];
-    developers: Developer;
+    developers: {
+      id: string;
+      Name: string;
+      IsActive: boolean;
+      gamesPublished: number;
+    };
   }
   

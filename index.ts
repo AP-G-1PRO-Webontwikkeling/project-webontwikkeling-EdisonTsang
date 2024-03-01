@@ -1,9 +1,10 @@
 import gamesData from './games.json';
-import { Developer, Game } from './interfaces';
+import developerData from './developers.json';
+import { Game } from './interfaces';
 import * as readline from 'readline-sync';
 
-
 const games: Game[] = gamesData;
+
 let again:boolean = true;
 
 while(again){
