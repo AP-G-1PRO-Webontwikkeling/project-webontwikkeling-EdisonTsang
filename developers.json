@@ -1,0 +1,64 @@
+[
+ {
+    "id": "DEVELOPER-001",
+    "Name": "Quantum Studio",
+    "IsActive": true,
+    "gamesPublished": 126
+},
+  {
+    "id": "DEVELOPER-002",
+    "Name": "EpicNova Games",
+    "IsActive": true,
+    "gamesPublished": 115
+  },
+  {
+    "id": "DEVELOPER-003",
+    "Name": "DreamForge Interactive",
+    "IsActive": true,
+    "gamesPublished": 102
+  },
+  {
+    "id": "DEVELOPER-004",
+    "Name": "Bethesda Game Studios",
+    "IsActive": false,
+    "gamesPublished": 29
+  },
+  {
+    "id": "DEVELOPER-005",
+    "Name": "Infinity Realms Entertainment",
+    "IsActive": true,
+    "gamesPublished": 68
+  },
+  {
+    "id": "DEVELOPER-006",
+    "Name": "CD Projekt",
+    "IsActive": false,
+    "gamesPublished": 13
+  },
+  {
+    "id": "DEVELOPER-007",
+    "Name": "Lunar Pixel Games",
+    "IsActive": true,
+    "gamesPublished": 96
+  },
+  {
+    "id": "DEVELOPER-008",
+    "Name": "BioWare",
+    "IsActive": false,
+    "gamesPublished": 24
+},
+{
+    "id": "DEVELOPER-009",
+    "Name": "Gearbox Software",
+    "IsActive": false,
+    "gamesPublished": 32
+},
+{
+    "id": "DEVELOPER-010",
+    "Name": "NetherRealm Studios",
+    "IsActive": true,
+    "gamesPublished": 41
+}
+
+
+]
