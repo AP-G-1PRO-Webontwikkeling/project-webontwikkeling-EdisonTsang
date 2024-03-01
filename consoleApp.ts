@@ -29,6 +29,7 @@ async function ConsoleApp() {
               });
         } else if (choice === 2){
             let inputId: string = readline.question("Please enter the ID you want to filter by: ")
+            console.log();
             const chosenGame = findGameById(inputId);
     
             if (chosenGame) {
@@ -39,7 +40,7 @@ async function ConsoleApp() {
                 console.log(`- Releasedate: ${chosenGame.releaseDate}`);
                 console.log(`- Genre: ${chosenGame.genre}`);
                 console.log(`- Platforms: ${chosenGame.platforms}`);
-                console.log(`- Developer:${chosenGame.developers.name}:`);
+                console.log(`- Developer: ${chosenGame.developers.name}:`);
                 console.log(`  - IsActive: ${chosenGame.developers.isActive}`);
                 console.log(`  - GamesPublished: ${chosenGame.developers.gamesPublished}`);
                 console.log("");
