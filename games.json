@@ -9,10 +9,10 @@
        "imageUrl": "https://raw.githubusercontent.com/EdisonTsang/jsonHost/main/Chrono%20Nexus.jpg",
        "genre": "Action RPG",
        "platforms": ["PlayStation 5", "Xbox Series X", "PC"],
-        "Developers":{
+        "developers":{
             "id": "DEVELOPER-001",
-            "Name": "Quantum Studio",
-            "IsActive": true,
+            "name": "Quantum Studio",
+            "isActive": true,
             "gamesPublished": 126
         }
     },
@@ -26,10 +26,10 @@
        "imageUrl": "https://raw.githubusercontent.com/EdisonTsang/jsonHost/main/Demons%20Souls.jpg",
        "genre": "Action RPG",
        "platforms": ["PlayStation 5", "Xbox Series X"],
-        "Developers": {
+        "developers": {
             "id": "DEVELOPER-002",
-            "Name": "EpicNova Games",
-            "IsActive": true,
+            "name": "EpicNova Games",
+            "isActive": true,
             "gamesPublished": 115
         }
     },
@@ -43,10 +43,10 @@
        "imageUrl": "https://raw.githubusercontent.com/EdisonTsang/jsonHost/main/Mystic%20Legends.jpg",
        "genre": "Action-Adventure",
        "platforms": ["PlayStation 5", "Xbox Series X"],
-       "Developers": {
+       "developers": {
             "id": "DEVELOPER-003",
-            "Name": "DreamForge Interactive",
-            "IsActive": true,
+            "name": "DreamForge Interactive",
+            "isActive": true,
             "gamesPublished": 102
         }
     },
@@ -61,10 +61,10 @@
        "imageUrl": "https://raw.githubusercontent.com/EdisonTsang/jsonHost/main/Eternal%20Odyssey.jpg",
        "genre": "RPG",
         "platforms": ["PlayStation 5", "Xbox Series X"],
-        "Developers": {
+        "developers": {
             "id": "DEVELOPER-004",
-            "Name": "Bethesda Game Studios",
-            "IsActive": false,
+            "name": "Bethesda Game Studios",
+            "isActive": false,
             "gamesPublished": 29
           }
         },
@@ -78,10 +78,10 @@
        "imageUrl": "https://raw.githubusercontent.com/EdisonTsang/jsonHost/main/Galactic%20Warfare.jpg",
        "genre": "Sci-Fi Shooter",
        "platforms": ["PlayStation 5", "Xbox Series X"],
-       "Developers": {
+       "developers": {
             "id": "DEVELOPER-005",
-            "Name": "Infinity Realms Entertainment",
-            "IsActive": true,
+            "name": "Infinity Realms Entertainment",
+            "isActive": true,
             "gamesPublished": 68
             }
         },
@@ -95,10 +95,10 @@
         "imageUrl": "https://raw.githubusercontent.com/EdisonTsang/jsonHost/main/Ancient%20Legends.jpg",
         "genre": "Action-Adventure",
         "platforms": ["PlayStation 5"],
-        "Developers":{
+        "developers":{
             "id": "DEVELOPER-006",
-            "Name": "CD Projekt",
-            "IsActive": false,
+            "name": "CD Projekt",
+            "isActive": false,
             "gamesPublished": 13
         }
     },  
@@ -112,10 +112,10 @@
         "imageUrl": "https://raw.githubusercontent.com/EdisonTsang/jsonHost/main/Galactic%20Explorers.jpg",
         "genre": "Space Exploration",
         "platforms": ["PlayStation 5", "PC"],
-        "Developers": {
+        "developers": {
             "id": "DEVELOPER-007",
-            "Name": "Lunar Pixel Games",
-            "IsActive": true,
+            "name": "Lunar Pixel Games",
+            "isActive": true,
             "gamesPublished": 96
         }
     },
@@ -129,10 +129,10 @@
         "imageUrl": "https://raw.githubusercontent.com/EdisonTsang/jsonHost/main/Racing%20Rivals.jpg",
         "genre": "Racing",
         "platforms": ["PlayStation 5", "Xbox Series X"],
-        "Developers":{
+        "developers":{
             "id": "DEVELOPER-008",
-            "Name": "BioWare",
-            "IsActive": false,
+            "name": "BioWare",
+            "isActive": false,
             "gamesPublished": 24
         }
     },
@@ -146,10 +146,10 @@
         "imageUrl": "https://raw.githubusercontent.com/EdisonTsang/jsonHost/main/Fantasy%20Quest.jpg",
         "genre": "Action RPG",
         "platforms": ["PlayStation 5"],
-        "Developers":{
+        "developers":{
             "id": "DEVELOPER-009",
-            "Name": "Gearbox Software",
-            "IsActive": false,
+            "name": "Gearbox Software",
+            "isActive": false,
             "gamesPublished": 32
         }
     },
@@ -163,10 +163,10 @@
         "imageUrl": "https://raw.githubusercontent.com/EdisonTsang/jsonHost/main/Stealth%20Ops.jpg",
         "genre": "Stealth Action",
         "platforms": ["PlayStation 5", "PC"],
-        "Developers":{
+        "developers":{
             "id": "DEVELOPER-010",
-            "Name": "NetherRealm Studios",
-            "IsActive": true,
+            "name": "NetherRealm Studios",
+            "isActive": true,
             "gamesPublished": 41
         }
     }    
