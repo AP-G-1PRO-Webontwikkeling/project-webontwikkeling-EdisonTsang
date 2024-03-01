@@ -14,12 +14,12 @@ async function ConsoleApp() {
     let again:boolean = true;
     
     while(again){
-        console.log('Welcome to the JSON data viewer!');
-        console.log('1. View all data');
-        console.log('2. Filter by ID');
+        console.log('Welkom bij de JSON-gegevensviewer!');
+        console.log('1. Bekijk alle gegevens');
+        console.log('2. Filter op ID');
         console.log('3. Exit');3
         
-        let choice:number = readline.questionInt("Please enter your choice: ");
+        let choice:number = readline.questionInt("Vul uw keuze in: ");
         
         if(choice === 1){
             games.forEach((game) => {
@@ -28,7 +28,7 @@ async function ConsoleApp() {
                 console.log();
               });
         } else if (choice === 2){
-            let inputId: string = readline.question("Please enter the ID you want to filter by: ")
+            let inputId: string = readline.question("Voer de ID in waarop u wilt filteren: ")
             console.log();
             const chosenGame = findGameById(inputId);
     
@@ -45,7 +45,7 @@ async function ConsoleApp() {
                 console.log(`  - GamesPublished: ${chosenGame.developers.gamesPublished}`);
                 console.log("");
               } else {
-                console.log(`No game is found with this id`);
+                console.log(`Geen spel is gevonden met deze ID`);
                 console.log("");
               }
         }
