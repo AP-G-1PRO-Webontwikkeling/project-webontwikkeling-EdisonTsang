@@ -40,7 +40,7 @@ async function ConsoleApp() {
                 console.log(`- Releasedate: ${chosenGame.releaseDate}`);
                 console.log(`- Genre: ${chosenGame.genre}`);
                 console.log(`- Platforms: ${chosenGame.platforms}`);
-                console.log(`- Developer: ${chosenGame.developers.name}:`);
+                console.log(`- Developer: 3${chosenGame.developers.name}:`);
                 console.log(`  - IsActive: ${chosenGame.developers.isActive}`);
                 console.log(`  - GamesPublished: ${chosenGame.developers.gamesPublished}`);
                 console.log("");
