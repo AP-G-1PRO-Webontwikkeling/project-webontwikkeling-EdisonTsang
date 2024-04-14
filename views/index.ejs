@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Game overzicht</title>
+</head>
+<nav>
+  <ul>
+    <li><a href="/">Games</a></li>
+    <li><a href="/developers.ejs">Developers</a></li>
+    
+  </ul>
+</nav>
+<body>
+  <h1>Game overzicht</h1>
+
+  <form action="/" method="POST">
+    <label for="searchInput">Zoek game:</label>
+    <input type="text" id="searchInput" name="search" placeholder="Voer game naam in..." value="<%= search %>">
+    <button type="submit">Search</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name
+          <a href="/?sort=name&order=asc">↑</a>
+          <a href="/?sort=name&order=desc">↓</a>
+        </th>
+        <th>Description
+          <a href="/?sort=description&order=asc">↑</a>
+          <a href="/?sort=description&order=desc">↓</a>
+        </th>
+        <th>Release Date
+          <a href="/?sort=releaseDate&order=asc">↑</a>
+          <a href="/?sort=releaseDate&order=desc">↓</a>
+        </th>
+        <th>Genre
+          <a href="/?sort=genre&order=asc">↑</a>
+          <a href="/?sort=genre&order=desc">↓</a>
+        </th>
+        <th>Platforms
+          <a href="/?sort=platforms&order=asc">↑</a>
+          <a href="/?sort=platforms&order=desc">↓</a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% games.forEach(game => { %>
+        <tr>
+          <td><a href="/detail/<%= game.id %>"><%= game.name %></a></td>
+          <td><%= game.description %></td>
+          <td><%= game.releaseDate %></td>
+          <td><%= game.genre %></td>
+          <td><%= game.platforms.join(', ') %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>
