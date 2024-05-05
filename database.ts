@@ -5,10 +5,6 @@ dotenv.config();
 
 const uri = "mongodb+srv://EdisonTsang:s115239@webontwikkeling-cluster.7vlvp9o.mongodb.net/";
 export const client = new MongoClient(uri);
-
-/*const dbName = 'gamesDB';
-const collectionName = 'games';*/
-
 export const collection : Collection<Game> = client.db("Project").collection<Game>("games");
 
 export async function getGames() {
@@ -17,7 +13,7 @@ export async function getGames() {
     } catch (error) {
         console.error("Fout bij het ophalen van games:", error);
         const response = await fetch("https://raw.githubusercontent.com/EdisonTsang/jsonHost/main/games.json");
-        const games : Game[] = await response.json();
+        const games : Game[] = await response.json(); //kon niet connecten met mongodb dus dit erbij zetten zodat ik verder kan werken
         return games;
     }
 }
