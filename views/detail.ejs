@@ -1,26 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/style.css">
+<%- include("partials/top") %>
   <title>Game Detail</title>
 </head>
 <body>
   <div class="detailContent">
     <h2><%= game.name %></h2>
-    <img src="<%= game.imageUrl %>" alt="<%= game.name %> Image">
-    <p>Description: <%= game.description %></p>
+    <img class="detailIMG" src="<%= game.imageUrl %>" alt="<%= game.name %> Image">
+    <div class="detailInfo">
+    <p><%= game.description %></p>
     <p>Age: <%= game.age %></p>
     <p>Multiplayer: <%= game.multiplayer ? 'Yes' : 'No' %></p>
     <p>Release Date: <%= game.releaseDate %></p>
     <p>Genre: <%= game.genre %></p>
-    <p>Platforms: <%= game.platforms.join(', ') %></p>
+    <p>Platforms: <%= game.platforms ? game.platforms.join(', ') : 'N/A' %></p>
     <p>Developer: <%= game.developers.name %></p>
     <p>Status: <%= game.developers.isActive %></p>
     <p>Games Published: <%= game.developers.gamesPublished %></p>
   </div>
-
-  <a href="/">Terug naar overzicht games</a>
+  </div>
 </body>
 </html>
