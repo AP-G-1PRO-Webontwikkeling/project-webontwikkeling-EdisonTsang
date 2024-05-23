@@ -93,7 +93,6 @@ table tbody tr.active-row {
     margin-left: 15rem;
     margin-right: 15rem;
     margin-top: 1rem;
-
     color: white;
   }
 
@@ -125,3 +124,14 @@ table tbody tr.active-row {
     margin-top: 1rem;
   }
 
+  .linkDeveloper{
+    color: white;
+    text-decoration: underline;
+  }
+
+  .detailInfoDeveloper{
+    text-align: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-top: 5rem;
+  }

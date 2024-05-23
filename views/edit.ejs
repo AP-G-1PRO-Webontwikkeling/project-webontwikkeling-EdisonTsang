@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Edit Game</title>
+</head>
+<body>
+  <h1>Edit Game</h1>
+  <form action="/edit/<%= game.id %>" method="POST">
+    <div>
+      <label for="name">Naam:</label>
+      <input type="text" id="name" name="name" value="<%= game.name %>">
+    </div>
+    <div>
+        <label for="releaseDate">Datum:</label>
+        <input type="text" id="releaseDate" name="releaseDate" value="<%= game.releaseDate %>">
+    </div>
+    <div>
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" value="<%= game.genre %>">
+    </div>
+    <div>
+        <label for="platforms">Platform:</label>
+        <select id="platforms" name="platforms" required>
+          <option value="PC" <%= game.platforms === 'PC' ? 'selected' : '' %>>PC</option>
+          <option value="Playstation 5" <%= game.platforms === 'Playstation 5' ? 'selected' : '' %>>Playstation 5</option>
+          <option value="Xbox One" <%= game.platforms === 'Xbox One' ? 'selected' : '' %>>Xbox One</option>
+          <option value="PC, Playstation 5" <%= game.platforms === 'PC, Playstation 5' ? 'selected' : '' %>>PC, Playstation 5</option>
+          <option value="PC, Xbox One" <%= game.platforms === 'PC, Xbox One' ? 'selected' : '' %>>PC, Xbox One</option>
+          <option value="playstation 5, Xbox One" <%= game.platforms === 'playstation 5, Xbox One' ? 'selected' : '' %>>Playstation 5, Xbox One</option>
+          <option value="PC, Playstation 5, Xbox One" <%= game.platforms === 'PC, Playstation 5, Xbox One' ? 'selected' : '' %>>PC, Playstation 5, Xbox One</option>
+        </select>
+      </div>
+    <button type="submit">Save</button>
+  </form>
+</body>
+</html>

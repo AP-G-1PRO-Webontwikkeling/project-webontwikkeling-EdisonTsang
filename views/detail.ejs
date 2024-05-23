@@ -7,14 +7,12 @@
     <img class="detailIMG" src="<%= game.imageUrl %>" alt="<%= game.name %> Image">
     <div class="detailInfo">
     <p><%= game.description %></p>
-    <p>Age: <%= game.age %></p>
-    <p>Multiplayer: <%= game.multiplayer ? 'Yes' : 'No' %></p>
-    <p>Release Date: <%= game.releaseDate %></p>
+    <p>Leeftijd: <%= game.age %></p>
+    <p>Meerdere spelers: <%= game.multiplayer ? 'Yes' : 'No' %></p>
+    <p>Datum: <%= game.releaseDate %></p>
     <p>Genre: <%= game.genre %></p>
-    <p>Platforms: <%= game.platforms ? game.platforms.join(', ') : 'N/A' %></p>
-    <p>Developer: <%= game.developers.name %></p>
-    <p>Status: <%= game.developers.isActive %></p>
-    <p>Games Published: <%= game.developers.gamesPublished %></p>
+    <p>Platform: <%= game.platforms %></p>
+    <p>Developer: <a class="linkDeveloper" href="/developerDetail/<%= game.developers.id %>"><%= game.developers.name %></a></p>
   </div>
   </div>
 </body>

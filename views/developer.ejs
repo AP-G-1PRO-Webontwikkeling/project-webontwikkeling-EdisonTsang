@@ -12,20 +12,14 @@
   <table>
     <thead>
       <tr>
-        <th>Name
-        </th>
-        <th>Active?
-        </th>
-        <th>GamePublished
+        <th>Name developer
         </th>
       </tr>
     </thead>
     <tbody>
       <% developer.forEach(developer => { %>
         <tr>
-          <td><%= developer.name %></a></td>
-          <td><%= developer.isActive %></td>
-          <td><%= developer.gamesPublished %></td>
+          <td><a href="/developerDetail/<%= developer.id %>"><%= developer.name %></a></td>
         </tr>
       <% }); %>
     </tbody>

@@ -1,0 +1,19 @@
+<%- include("partials/top") %>
+  <title>Game overzicht</title>
+</head>
+<nav>
+  <ul>
+    <li><a href="/">Games</a></li>
+    <li><a class="active" href="/developer">Developers</a></li>
+  </ul>
+</nav>
+<body>
+  <div class="detailContent">
+    <h2><%= developer.name %></h2>
+    <div class="detailInfoDeveloper">
+    <p>Is het nog actief?:  <%= developer.isActive ? 'Ja' : 'Nee' %></p>
+    <p>Games gepubliceerd: <%= developer.gamesPublished %></p>
+  </div>
+  </div>
+</body>
+</html>

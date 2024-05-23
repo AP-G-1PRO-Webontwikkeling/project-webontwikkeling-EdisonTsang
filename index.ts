@@ -1,22 +1,15 @@
-import gamesData from './games.json';
-import developerData from './developers.json';
 import { Developer, Game } from './interfaces';
-import bodyParser from 'body-parser'; // Importeer body-parser
-import * as readline from 'readline-sync';
 import express, { Request, Response } from 'express';
-import { connect, getGames} from "./database";
-
+import { connect, getDevelopers, getGames, updateGameTitle, updateGamePlatforms, updateGameDate,updateGameGenre,DeleteCollection} from "./database";
 
 
 const app = express();
 app.set("port", process.env.PORT || 3000);
-
+app.use(express.json({ limit: "1mb" }));
+app.use(express.urlencoded({ extended:true}))
 app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
-
-let games: Game[] = []; 
-const developer : Developer[] = developerData;
 
 app.get('/', async (req: Request, res: Response) => {
   let games: Game[] = await getGames();
@@ -29,6 +22,7 @@ app.get('/', async (req: Request, res: Response) => {
   filteredGames = sortGames(filteredGames, sort, order);
   res.render('index', { games: filteredGames, searchQuery,sort,order }); 
 });
+
 
 function sortGames(games: Game[], sortBy: string, sortOrder: string): Game[] {
     return games.sort((a, b) => {
@@ -48,14 +42,10 @@ function sortGames(games: Game[], sortBy: string, sortOrder: string): Game[] {
     });
 }
 
-app.get('/developer', async(req: Request, res: Response) => {
- res.render("developer",{developer:developer});
-});
-
 app.get('/detail/:id', async (req: Request, res: Response) => {
-  const games: Game[] = await getGames(); // Fetch games
+  const games: Game[] = await getGames(); 
   const gameId: string = req.params.id;
-  const chosenGame = findGameById(gameId, games); // Pass games array to the function
+  const chosenGame = findGameById(gameId, games);
   if (chosenGame) {
     res.render('detail', { game: chosenGame });
   } else {
@@ -63,12 +53,61 @@ app.get('/detail/:id', async (req: Request, res: Response) => {
   }
 });
 
+app.get('/developer', async(req: Request, res: Response) => {
+  let developer: Developer [] = await getDevelopers();
+ res.render("developer", {developer :developer });
+});
+
+app.get('/developerDetail/:id', async (req: Request, res: Response) => {
+  const developer: Developer[] = await getDevelopers();
+  const developerId: string = req.params.id;
+  const chosenDeveloper = findDeveloperById(developerId, developer);
+  if (chosenDeveloper) {
+    res.render('developerDetail', { developer: chosenDeveloper });
+  } else {
+    res.status(404).send('Developer not found');
+  }
+});
+
+
+
 function findGameById(id: string, games: Game[]): Game | undefined {
   return games.find((game) => game.id === id);
 }
 
+function findDeveloperById(id: string, developers: Developer[]): Developer | undefined {
+  return developers.find((developer) => developer.id === id);
+}
+
+
+app.get('/edit/:id', async (req: Request, res: Response) => {
+  const games: Game[] = await getGames(); 
+  const gameId: string = req.params.id;
+  const chosenGame = await findGameById(gameId,games);
+  if (chosenGame) {
+    res.render('edit', { game: chosenGame });
+  } else {
+    res.status(404).send('Game not found');
+  }
+});
+
+// Route voor het opslaan van de bewerkte gegevens
+app.post('/edit/:id', async (req: Request, res: Response) => {
+  const gameId: string = req.params.id;
+  let title: string = req.body.name;
+  let platforms: string[] = req.body.platforms;
+  let releaseDate: string = req.body.releaseDate;
+  let genre: string = req.body.genre;
+  await updateGameTitle(gameId, title);
+  await updateGamePlatforms(gameId, platforms);
+  await updateGameDate(gameId,releaseDate)
+  await updateGameGenre(gameId,genre)
+  res.redirect('/');
+});
+
 
 app.listen(app.get("port"), async() => {
+ // await DeleteCollection();
   await connect();
   console.log("Server started on http://localhost:" + app.get('port'));
  
