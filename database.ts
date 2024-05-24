@@ -13,9 +13,8 @@ export const gamesCollection : Collection<Game> = client.db("Project").collectio
 export const developersCollection : Collection<Developer> = client.db("Project").collection<Developer>("developers");
 export const usersCollection: Collection<User> = client.db("Project").collection<User>("users");
 
-
 export async function createUser() {
-    const userExists = await usersCollection.findOne({ role: 'USER' });
+    const userExists = await usersCollection.findOne({ role: "USER" });
 
     if (userExists) {
         console.log("Er is een bestaande user");
@@ -38,8 +37,8 @@ export async function createUser() {
 }
 
 export async function createAdmin() {
-    const adminExists = await usersCollection.findOne({ role: 'ADMIN' });
-    if (!adminExists) {
+    const adminExists = await usersCollection.findOne({ role: "ADMIN" });
+    if (adminExists) {
         console.log("Er is een bestaande admin");
         return;
     }
@@ -73,6 +72,21 @@ export async function login(email: string, password: string) {
     } else {
         throw new Error("User not found");
     }
+}
+
+export async function userExists(email: string): Promise<boolean> {
+    const existingUser = await usersCollection.findOne({ email });
+    return existingUser !== null;
+}
+
+export async function registerUser(email: string, password: string): Promise<void> {
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const newUser: User = { 
+        email, 
+        password: hashedPassword, 
+        role: 'USER' 
+    };
+    await usersCollection.insertOne(newUser);
 }
 
 

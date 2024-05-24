@@ -1,7 +1,7 @@
 import { Developer, Game , User} from './interfaces';
 import express, { Request, Response, Express} from 'express';
 import { secureMiddleware } from "./secureMiddleware";
-import { connect, getDevelopers, getGames, updateGameTitle, updateGamePlatforms, updateGameDate,updateGameGenre,DeleteCollection, createUser, createAdmin, login} from "./database";
+import { connect, getDevelopers, getGames, updateGameTitle, updateGamePlatforms, updateGameDate,updateGameGenre,DeleteCollection, createUser, createAdmin, login, userExists, registerUser } from "./database";
 import session from "./session";
 import dotenv from "dotenv";
 
@@ -27,7 +27,7 @@ app.get('/', secureMiddleware, async (req: Request, res: Response) => {
   let { sort = 'name', order = 'asc' } = req.query as { sort?: string; order?: string };
   filteredGames = sortGames(filteredGames, sort, order);
   if (req.session.user) {
-    res.render('index', { games: filteredGames, searchQuery,sort,order,user: req.session.user }); 
+    res.render('index', { games: filteredGames, searchQuery,sort,order,user: req.session.user}); 
 } else {
     res.redirect("/login");
 }
@@ -137,6 +137,23 @@ app.post("/logout", async(req, res) => {
   req.session.destroy(() => {
       res.redirect("/login");
   });
+});
+
+// Route voor de registratiepagina
+app.get('/register', (req: Request, res: Response) => {
+  res.render('register', { error: null });
+});
+
+// Route voor het verwerken van het registratieformulier
+app.post('/register', async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+
+  if (await userExists(email)) {
+    return res.render('register', { error: 'email already exists' });
+  }
+
+  await registerUser(email, password);
+  res.redirect('/login');
 });
 
 app.listen(app.get("port"), async() => {

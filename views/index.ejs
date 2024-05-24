@@ -59,7 +59,9 @@
             <td><%= game.releaseDate %></td>
             <td><%= game.genre %></td>
             <td><%= game.platforms %></td>
-            <td><a href="/edit/<%= game.id %>">Bewerken</a></td>
+            <% if (user.role === "ADMIN" ) { %>
+              <td><a href="/edit/<%= game.id %>">Bewerken</a></td>
+            <% } %>
           </tr>
         <% }); %>
       </tbody>
