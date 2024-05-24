@@ -1,14 +1,79 @@
 import { Collection, MongoClient } from "mongodb";
 import dotenv from "dotenv";
-import { Developer, Game } from "./interfaces";
-import test from "node:test";
-dotenv.config();
+import { Developer, Game, User } from "./interfaces";
+import bcrypt from 'bcrypt'; 
 
-const uri = "mongodb+srv://EdisonTsang:s115239@webontwikkeling-cluster.7vlvp9o.mongodb.net/";
-const client = new MongoClient(uri);
+dotenv.config();
+const saltRounds : number = 10;
+
+export const MONGODB_URI = process.env.MONGODB_URI ?? "mongodb://localhost:27017";
+export const client = new MongoClient(MONGODB_URI);
 
 export const gamesCollection : Collection<Game> = client.db("Project").collection<Game>("games");
 export const developersCollection : Collection<Developer> = client.db("Project").collection<Developer>("developers");
+export const usersCollection: Collection<User> = client.db("Project").collection<User>("users");
+
+
+export async function createUser() {
+    const userExists = await usersCollection.findOne({ role: 'USER' });
+
+    if (userExists) {
+        console.log("Er is een bestaande user");
+        return;
+        
+    }
+    else{
+        let email : string | undefined = process.env.USER_EMAIL;
+        let password : string | undefined = process.env.USER_PASSWORD;
+        if (email === undefined || password === undefined) {
+            throw new Error("ADMIN_EMAIL and ADMIN_PASSWORD must be set in environment");
+        }
+        await usersCollection.insertOne({
+            email: email,
+            password: await bcrypt.hash(password, saltRounds),
+            role: "USER"
+        });
+        console.log("user aangemaakt");
+    }
+}
+
+export async function createAdmin() {
+    const adminExists = await usersCollection.findOne({ role: 'ADMIN' });
+    if (!adminExists) {
+        console.log("Er is een bestaande admin");
+        return;
+    }
+    else{
+        let email : string | undefined = process.env.ADMIN_EMAIL;
+        let password : string | undefined = process.env.ADMIN_PASSWORD;
+        if (email === undefined || password === undefined) {
+            throw new Error("ADMIN_EMAIL and ADMIN_PASSWORD must be set in environment");
+        }
+        await usersCollection.insertOne({
+            email: email,
+            password: await bcrypt.hash(password, saltRounds),
+            role: "ADMIN"
+        });
+        console.log("admin aangemaakt");
+
+    }
+}
+
+export async function login(email: string, password: string) {
+    if (email === "" || password === "") {
+        throw new Error("Email and password required");
+    }
+    let user : User | null = await usersCollection.findOne<User>({email: email});
+    if (user) {
+        if (await bcrypt.compare(password, user.password!)) {
+            return user;
+        } else {
+            throw new Error("Password incorrect");
+        }
+    } else {
+        throw new Error("User not found");
+    }
+}
 
 
 export async function getGames() {

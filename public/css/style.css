@@ -135,3 +135,36 @@ table tbody tr.active-row {
     padding-right: 2rem;
     margin-top: 5rem;
   }
+
+  
+.login-container h1 {
+  margin-bottom: 1rem;
+}
+
+.login-container form div {
+  margin-bottom: 1rem;
+}
+
+.login-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.login-container button {
+  padding: 0.7rem;
+  background: #333;
+  color: white;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background: #555;
+}

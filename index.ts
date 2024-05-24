@@ -1,17 +1,23 @@
-import { Developer, Game } from './interfaces';
-import express, { Request, Response } from 'express';
-import { connect, getDevelopers, getGames, updateGameTitle, updateGamePlatforms, updateGameDate,updateGameGenre,DeleteCollection} from "./database";
+import { Developer, Game , User} from './interfaces';
+import express, { Request, Response, Express} from 'express';
+import { secureMiddleware } from "./secureMiddleware";
+import { connect, getDevelopers, getGames, updateGameTitle, updateGamePlatforms, updateGameDate,updateGameGenre,DeleteCollection, createUser, createAdmin, login} from "./database";
+import session from "./session";
+import dotenv from "dotenv";
 
+dotenv.config();
 
-const app = express();
+const app : Express = express();
+
+app.set("view engine", "ejs");
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.set("port", process.env.PORT || 3000);
-app.use(express.json({ limit: "1mb" }));
-app.use(express.urlencoded({ extended:true}))
-app.set('view engine', 'ejs');
+app.use(session);
 
 app.use(express.static('public'));
 
-app.get('/', async (req: Request, res: Response) => {
+app.get('/', secureMiddleware, async (req: Request, res: Response) => {
   let games: Game[] = await getGames();
   let filteredGames: Game[] = games; 
   const searchQuery: string | undefined = req.query.search as string | undefined;
@@ -20,7 +26,11 @@ app.get('/', async (req: Request, res: Response) => {
   }
   let { sort = 'name', order = 'asc' } = req.query as { sort?: string; order?: string };
   filteredGames = sortGames(filteredGames, sort, order);
-  res.render('index', { games: filteredGames, searchQuery,sort,order }); 
+  if (req.session.user) {
+    res.render('index', { games: filteredGames, searchQuery,sort,order,user: req.session.user }); 
+} else {
+    res.redirect("/login");
+}
 });
 
 
@@ -91,7 +101,6 @@ app.get('/edit/:id', async (req: Request, res: Response) => {
   }
 });
 
-// Route voor het opslaan van de bewerkte gegevens
 app.post('/edit/:id', async (req: Request, res: Response) => {
   const gameId: string = req.params.id;
   let title: string = req.body.name;
@@ -105,10 +114,36 @@ app.post('/edit/:id', async (req: Request, res: Response) => {
   res.redirect('/');
 });
 
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+app.post("/login", async(req, res) => {
+  const email : string = req.body.email;
+  const password : string = req.body.password;
+  try {
+      let user : User = await login(email, password);
+      delete user.password; 
+      req.session.user = user;
+      console.log("is  gelukt")
+      res.redirect("/")
+  } catch (e : any) {
+    console.log("is niet gelukt")
+      res.redirect("/login");
+  }
+});
+
+app.post("/logout", async(req, res) => {
+  req.session.destroy(() => {
+      res.redirect("/login");
+  });
+});
 
 app.listen(app.get("port"), async() => {
- // await DeleteCollection();
+  await DeleteCollection();
   await connect();
+  await createUser();
+  await createAdmin();
   console.log("Server started on http://localhost:" + app.get('port'));
  
 });
