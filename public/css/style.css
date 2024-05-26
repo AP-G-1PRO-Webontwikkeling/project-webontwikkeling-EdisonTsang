@@ -81,7 +81,13 @@ table tbody tr.active-row {
 
   a{
     color: black;
-    text-decoration: none;
+    text-decoration: underline;
+  }
+
+  h1{
+    margin-left: 1rem;
+    color: white;
+   
   }
 
   .detailContent{
@@ -136,9 +142,24 @@ table tbody tr.active-row {
     margin-top: 5rem;
   }
 
+  .login-container{
+    background-color: white;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10rem;
+    border: solid black 2px;
+    padding: 2rem;
+    padding-bottom: 2rem;
+    border-radius: 25px;
+  }
+
   
 .login-container h1 {
   margin-bottom: 1rem;
+  text-align: center;
+  color: black;
+
 }
 
 .login-container form div {
@@ -161,10 +182,127 @@ table tbody tr.active-row {
   background: #333;
   color: white;
   border: none;
-  width: 100%;
+  width: 30%;
   cursor: pointer;
+  margin-left: 13rem;
+  border-radius: 25px;
 }
 
 .login-container button:hover {
   background: #555;
 }
+
+.login-container a{
+  text-decoration: underline;
+}
+
+
+.registerContainer{
+  background-color: white;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10rem;
+  border: solid black 2px;
+  padding: 2rem;
+  padding-bottom: 2rem;
+  border-radius: 25px;
+}
+
+
+.registerContainer h1 {
+margin-bottom: 1rem;
+text-align: center;
+color: black;
+
+}
+
+.lregisterContainer form div {
+margin-bottom: 1rem;
+}
+
+.registerContainer label {
+display: block;
+margin-bottom: 0.5rem;
+}
+
+.registerContainer input {
+width: 100%;
+padding: 0.5rem;
+box-sizing: border-box;
+margin-bottom: 2rem;
+}
+
+.registerContainer button {
+padding: 0.7rem;
+background: #333;
+color: white;
+border: none;
+width: 30%;
+cursor: pointer;
+margin-left: 13rem;
+border-radius: 25px;
+}
+
+.registerContainer button:hover {
+background: #555;
+}
+
+.logoutBtn{
+  margin-left: 1rem;
+  width: 10%;
+  height: 2rem;
+  border-radius: 25px;
+}
+
+
+.editContainer{
+  background-color: white;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10rem;
+  border: solid black 2px;
+  padding: 2rem;
+  padding-bottom: 2rem;
+  border-radius: 25px;
+}
+
+
+.editContainer h1 {
+margin-bottom: 1rem;
+text-align: center;
+color: black;
+}
+
+.editContainer form div {
+margin-bottom: 1rem;
+}
+
+.editContainer label {
+display: block;
+margin-bottom: 0.5rem;
+}
+
+.editContainer input {
+width: 100%;
+padding: 0.5rem;
+box-sizing: border-box;
+margin-bottom: 2rem;
+}
+
+.editContainer button {
+padding: 0.7rem;
+background: #333;
+color: white;
+border: none;
+width: 30%;
+cursor: pointer;
+border-radius: 25px;
+text-align: center;
+}
+
+.editContainer button:hover {
+background: #555;
+}
+

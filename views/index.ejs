@@ -12,10 +12,12 @@
     <li><a href="/developer">Developers</a></li>
     
   </ul>
+  <h1>Welkom, <%= user.email %>!</h1>
 </nav>
 <body>
 
-<!-- Zoekbalk -->
+
+
 <form class="indexSearchBar" action="/" method="GET">
   <label style="margin-left: 1rem; color: white;" for="searchInput">Zoek een game:</label>
   <input type="text" id="search" name="search" placeholder="Voer zoekterm in" value="<%= searchQuery %>">
@@ -68,10 +70,9 @@
     </table>
   </div>
 
-  <p><%= user.email %> is logged in.</p>
 
   <form action="/logout" method="post">
-      <button type="submit">Logout</button>
+      <button class="logoutBtn" type="submit">Uitloggen</button>
   </form>
 
 </body>

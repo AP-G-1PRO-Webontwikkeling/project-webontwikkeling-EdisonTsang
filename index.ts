@@ -125,10 +125,8 @@ app.post("/login", async(req, res) => {
       let user : User = await login(email, password);
       delete user.password; 
       req.session.user = user;
-      console.log("is  gelukt")
       res.redirect("/")
   } catch (e : any) {
-    console.log("is niet gelukt")
       res.redirect("/login");
   }
 });
@@ -139,17 +137,15 @@ app.post("/logout", async(req, res) => {
   });
 });
 
-// Route voor de registratiepagina
 app.get('/register', (req: Request, res: Response) => {
   res.render('register', { error: null });
 });
 
-// Route voor het verwerken van het registratieformulier
 app.post('/register', async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   if (await userExists(email)) {
-    return res.render('register', { error: 'email already exists' });
+    return res.render('register', { error: 'email bestaat al!' });
   }
 
   await registerUser(email, password);

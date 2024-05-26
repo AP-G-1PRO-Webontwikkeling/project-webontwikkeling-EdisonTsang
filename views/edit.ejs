@@ -7,14 +7,15 @@
   <title>Edit Game</title>
 </head>
 <body>
-  <h1>Edit Game</h1>
+  <div class="editContainer">
+    <h1>Edit Game</h1>
   <form action="/edit/<%= game.id %>" method="POST">
     <div>
       <label for="name">Naam:</label>
       <input type="text" id="name" name="name" value="<%= game.name %>">
     </div>
     <div>
-        <label for="releaseDate">Datum:</label>
+        <label for="releaseDate">Datum: (yyyy-MM-dd)</label>
         <input type="text" id="releaseDate" name="releaseDate" value="<%= game.releaseDate %>">
     </div>
     <div>
@@ -33,7 +34,10 @@
           <option value="PC, Playstation 5, Xbox One" <%= game.platforms === 'PC, Playstation 5, Xbox One' ? 'selected' : '' %>>PC, Playstation 5, Xbox One</option>
         </select>
       </div>
-    <button type="submit">Save</button>
+      <div style="text-align: center;">
+        <button type="submit">Opslaan</button>
+      </div>
   </form>
+</div>
 </body>
 </html>
